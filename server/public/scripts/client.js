@@ -86,6 +86,7 @@ axios({
 .then (function(response) {
     //this will handle good/successful response
     console.log('Request to POST /artist worked.', response.status);
+    getArtistsRenderToDom();
 
     document.getElementById('name').value = '';
     document.getElementById('born').value = '';
