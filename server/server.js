@@ -47,8 +47,21 @@ const songListArray = [
 
 app.use(express.static('server/public'));
 
+app.use(express.json());
+
 app.get('/artist', (req, res) => {
     res.send(artistListArray);
+});
+
+app.post('/artist', (req, res) => {
+    console.log('get a POST request!', req);
+    let artistInput = req.body;
+    artistInputArray.push({
+        name: artistInput.name,
+        born: artistInput.born,
+        died: artistInput.died
+    })
+    console.log('artist list', artistInputArray);
 });
 
 // TODO - Add GET for songs

@@ -33,5 +33,14 @@
         </thead>
         <tbody id="songTableBody"></tbody>
     </table>
+
+    <form onsubmit="artistMessageForServer(event)">
+        <input type="text" id="name" placeholder="Artist Name"> 
+        <input type="text" id="born" placeholder="Artist Birth date"> 
+        <input type="text" id="died" placeholder="Artist Death date"> 
+
+        <button type="submit">Add Artist</button>
+
+    </form>
 </body>
 </html>
