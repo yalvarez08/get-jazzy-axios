@@ -54,4 +54,38 @@ function onReady() {
             alert('Something bad happened! Check the console for more details.')
         });
 }
+
+function artistMesssageForServer(event) {
+    event.preventDefault();
+    console.log('success. form was submitted');
+
+    //get input info from DOM IOT send to server.js
+    let name = document.getElementById('name').value;
+    let born = document.getElementById('born').value;
+    let died = document.getElementById('died').value;
+
+    //consolidate info^^ 
+    //server accepts info that is 1 object
+    let addArtist = {
+        name: name,
+        born: born,
+        died: died
+    };
+
+axios({
+    method: 'POST',
+    url: '/artist',
+    data: addArtist
+})
+.then (function(response) {
+
+}
+)
+.catch (function(error) {
+
+
+}
+)
+
+
 onReady();
