@@ -1,6 +1,8 @@
 function onReady() {
     console.log('Hello from client.js');
 
+    getArtistsRenderToDom();
+
     axios({
         method: 'GET',
         url: '/artist'
@@ -55,6 +57,10 @@ function onReady() {
         });
 }
 
+function getArtistsRenderToDom() {
+    //this will allow to reset everytime
+    document.querySelector('#artistTableBody').innerHTML = '';
+}
 function artistMesssageForServer(event) {
     event.preventDefault();
     console.log('success. form was submitted');
@@ -78,14 +84,20 @@ axios({
     data: addArtist
 })
 .then (function(response) {
+    //this will handle good/successful response
+    console.log('Request to POST /artist worked.', response.status);
 
-}
-)
+    document.getElementById('name').value = '';
+    document.getElementById('born').value = '';
+    document.getElementById('died').value = '';
+
+})
 .catch (function(error) {
-
+    //this will handle bad response
+    alert('Request to POST /artist failed. Please try again.');
+    console.error('Request to POST /artist failed.', error);
+    }
+);
 
 }
-)
-
-
 onReady();
